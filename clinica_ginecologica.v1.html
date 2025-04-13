@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clínica Gineco-Pediátrica</title>
+  <style>
+    :root {
+      --primary: #f8e1f4;
+      --accent: #e0c1f0;
+      --text: #333;
+      --white: #fff;
+      --soft-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: var(--primary);
+      color: var(--text);
+    }
+
+    header {
+      background: var(--accent);
+      padding: 1rem;
+      text-align: center;
+      box-shadow: var(--soft-shadow);
+    }
+
+    header img {
+      max-width: 200px;
+    }
+
+    section {
+      padding: 2rem;
+      background: var(--white);
+      margin: 1rem;
+      border-radius: 1rem;
+      box-shadow: var(--soft-shadow);
+    }
+
+    h2 {
+      color: #b167c2;
+    }
+
+    .accordion {
+      border: none;
+      border-radius: 1rem;
+      box-shadow: var(--soft-shadow);
+      overflow: hidden;
+    }
+
+    .accordion button {
+      width: 100%;
+      background: var(--accent);
+      border: none;
+      outline: none;
+      text-align: left;
+      padding: 1rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .accordion div {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      background: #fff5fc;
+      padding: 0 1rem;
+    }
+
+    .accordion.open div {
+      max-height: 200px;
+      padding: 1rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    input, select, textarea {
+      padding: 0.8rem;
+      border-radius: 0.5rem;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    button.submit {
+      background: #b167c2;
+      color: white;
+      border: none;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: var(--soft-shadow);
+    }
+
+    .success-message {
+      background: #d4edda;
+      color: #155724;
+      border-left: 5px solid #28a745;
+      padding: 1rem;
+      margin-top: 1rem;
+      border-radius: 0.5rem;
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      section {
+        margin: 1rem 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://raw.githubusercontent.com/tuusuario/tu-repo/main/logo.png" alt="Logo Clínica" />
+  </header>
+
+  <section>
+    <h2>¿Quiénes somos?</h2>
+    <p>Clínica enfocada en salud ginecológica, obstétrica y pediátrica. Brindamos atención con calidez, ética profesional y trato humano, especialmente a mujeres, infancias y familias.</p>
+  </section>
+
+  <section>
+    <h2>Misión</h2>
+    <p>Brindar atención médica especializada, accesible y con enfoque integral a mujeres, gestantes e infancias.</p>
+  </section>
+
+  <section>
+    <h2>Visión</h2>
+    <p>Ser un referente en salud femenina e infantil, por nuestra excelencia médica, cercanía y compromiso con la comunidad.</p>
+  </section>
+
+  <section>
+    <h2>Valores</h2>
+    <ul>
+      <li>Ética profesional</li>
+      <li>Empatía</li>
+      <li>Diversidad</li>
+      <li>Honestidad</li>
+      <li>Responsabilidad</li>
+      <li>Enfoque de género y niñez</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Especialidades</h2>
+    <div class="accordion">
+      <button onclick="toggleAccordion(this)">👩⚕️ Ginecología</button>
+      <div>Salud reproductiva, planificación familiar, anticoncepción, estudios Papanicolaou, chequeos ginecológicos.</div>
+
+      <button onclick="toggleAccordion(this)">🧐 Obstetricia</button>
+      <div>Control prenatal, ultrasonidos, educación perinatal, atención en embarazo de bajo y alto riesgo.</div>
+
+      <button onclick="toggleAccordion(this)">👶 Pediatría</button>
+      <div>Control del desarrollo infantil, vacunas, revisiones, prevención de enfermedades y orientación para madres/padres.</div>
+
+      <button onclick="toggleAccordion(this)">🩺 Medicina General</button>
+      <div>Valoración inicial, seguimiento a condiciones generales de salud, chequeos básicos y canalización a especialidades.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Agenda tu cita</h2>
+    <form id="citaForm">
+      <input type="text" name="nombre" placeholder="Nombre completo" required />
+      <input type="tel" name="telefono" placeholder="Teléfono" required />
+      <input type="email" name="correo" placeholder="Correo electrónico" required />
+
+      <select name="sexo" required>
+        <option value="">Sexo</option>
+        <option value="Femenino">Femenino</option>
+        <option value="Masculino">Masculino</option>
+        <option value="Otro">Otro</option>
+      </select>
+
+      <select name="especialidad" required>
+        <option value="">Especialidad</option>
+        <option>Ginecología</option>
+        <option>Obstetricia</option>
+        <option>Pediatría</option>
+        <option>Medicina General</option>
+      </select>
+
+      <input type="date" name="fecha" required />
+      <input type="time" name="hora" required />
+      <textarea name="comentarios" placeholder="Comentarios adicionales"></textarea>
+
+      <button class="submit" type="submit">Agendar</button>
+      <div class="success-message" id="mensajeExito">
+        👍 Gracias, tu cita ha sido agendada.<br>
+        ⏳ Redirigiendo al inicio...<br>
+        🎉 Te contactaremos pronto.
+      </div>
+    </form>
+  </section>
+
+  <script>
+    function toggleAccordion(btn) {
+      const div = btn.nextElementSibling;
+      const allDivs = document.querySelectorAll('.accordion div');
+      allDivs.forEach(d => { if (d !== div) d.parentElement.classList.remove('open'); });
+      btn.parentElement.classList.toggle('open');
+    }
+
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwSWJkhkr0H2EFxsBQfzOolLyM93A60q0UJ4y2vofR623VCclmL1afG2UWz6lK2Eym2/exec';
+    const form = document.getElementById('citaForm');
+    const mensaje = document.getElementById('mensajeExito');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const formData = new FormData(form);
+
+      fetch(scriptURL, { method: 'POST', body: formData })
+        .then(() => {
+          mensaje.style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          form.reset();
+          setTimeout(() => mensaje.style.display = 'none', 5000);
+        })
+        .catch(error => alert('Error al enviar: ' + error.message));
+    });
+  </script>
+</body>
+</html>
